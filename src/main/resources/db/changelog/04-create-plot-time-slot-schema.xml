@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+  <changeSet id="04" author="Fahmy">
+    <comment>Create Plot Time Slots table</comment>
+    <createTable tableName="plot_time_slots">
+      <column name="id" type="bigint" autoIncrement="true" incrementBy="1" startWith="1">
+        <constraints nullable="false" primaryKey="true" primaryKeyName="plot_time_slots_pk"/>
+      </column>
+      <column name="plot_id" type="int">
+        <constraints nullable="false" referencedTableName="plots" foreignKeyName="id"/>
+      </column>
+      <column name="time_slot_id" type="int">
+        <constraints nullable="false" referencedTableName="time_slots" foreignKeyName="id"/>
+      </column>
+      <column name="status" type="varchar(256)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="start_date_time" type="timestamp">
+        <constraints nullable="false"/>
+      </column>
+      <column name="created_date" type="timestamp">
+      </column>
+      <column name="last_modified_date" type="timestamp">
+      </column>
+    </createTable>
+    <addForeignKeyConstraint constraintName="time_slots_fk"
+                             baseTableName="plot_time_slots" baseColumnNames="time_slot_id"
+                             referencedTableName="time_slots" referencedColumnNames="id"/>
+    <addForeignKeyConstraint constraintName="plots_fk"
+                             baseTableName="plot_time_slots" baseColumnNames="plot_id"
+                             referencedTableName="plots" referencedColumnNames="id"/>
+
+  </changeSet>
+</databaseChangeLog>

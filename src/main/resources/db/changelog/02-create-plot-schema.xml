@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+  <changeSet id="02" author="Fahmy">
+    <comment>Create Plots table</comment>
+    <createTable tableName="plots">
+      <column name="id" type="bigint" autoIncrement="true" incrementBy="1" startWith="100">
+        <constraints nullable="false" primaryKey="true" primaryKeyName="plots_pk"/>
+      </column>
+      <column name="area" type="decimal(20,2)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="crop_id" type="int">
+        <constraints referencedTableName="crops" foreignKeyName="id"/>
+      </column>
+      <column name="created_date" type="timestamp">
+      </column>
+      <column name="last_modified_date" type="timestamp">
+      </column>
+    </createTable>
+  </changeSet>
+</databaseChangeLog>
