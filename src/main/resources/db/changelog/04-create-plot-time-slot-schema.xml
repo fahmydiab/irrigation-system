@@ -13,9 +13,9 @@
       <column name="plot_id" type="int">
         <constraints nullable="false" referencedTableName="plots" foreignKeyName="id"/>
       </column>
-      <column name="time_slot_id" type="int">
-        <constraints nullable="false" referencedTableName="time_slots" foreignKeyName="id"/>
-      </column>
+<!--      <column name="time_slot_id" type="int">-->
+<!--        <constraints nullable="false" referencedTableName="time_slots" foreignKeyName="id"/>-->
+<!--      </column>-->
       <column name="status" type="varchar(256)">
         <constraints nullable="false"/>
       </column>
@@ -27,9 +27,12 @@
       <column name="last_modified_date" type="timestamp">
       </column>
     </createTable>
-    <addForeignKeyConstraint constraintName="time_slots_fk"
-                             baseTableName="plot_time_slots" baseColumnNames="time_slot_id"
-                             referencedTableName="time_slots" referencedColumnNames="id"/>
+<!--    <addForeignKeyConstraint constraintName="time_slots_fk"-->
+<!--                             baseTableName="plot_time_slots" baseColumnNames="time_slot_id"-->
+<!--                             referencedTableName="time_slots" referencedColumnNames="id"/>-->
+    <addUniqueConstraint tableName="plot_time_slots" columnNames="plot_id,start_date_time"
+                         constraintName="plot_start_time_unique"/>
+
     <addForeignKeyConstraint constraintName="plots_fk"
                              baseTableName="plot_time_slots" baseColumnNames="plot_id"
                              referencedTableName="plots" referencedColumnNames="id"/>

@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 @Table(name = "time_slot_days")
 @Data
 @AllArgsConstructor
-@RequiredArgsConstructor
 @NoArgsConstructor
 public class TimeSlotDay implements Serializable {
 
@@ -20,19 +19,21 @@ public class TimeSlotDay implements Serializable {
   private Long id;
 
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "time_slot_Id")
-  @ToString.Exclude
-  @EqualsAndHashCode.Exclude
-  private TimeSlot timeSlot;
+//  @ManyToOne(fetch = FetchType.LAZY)
+//  @JoinColumn(name = "time_slot_Id")
+//  @ToString.Exclude
+//  @EqualsAndHashCode.Exclude
+//  private TimeSlot timeSlot;
 
   private LocalDate startDate;
 
   @EqualsAndHashCode.Exclude
   @ToString.Exclude
-  private LocalDateTime createdAt;
+  private LocalDateTime createdDate;
 
   @EqualsAndHashCode.Exclude
   @ToString.Exclude
-  private LocalDateTime updatedAt;
+  private LocalDateTime lastModifiedDate;
+
+
 }
