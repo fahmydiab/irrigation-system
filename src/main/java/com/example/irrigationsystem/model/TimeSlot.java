@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Entity
-@Table(name = "time_slots")
+//@Entity
+//@Table(name = "time_slots")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

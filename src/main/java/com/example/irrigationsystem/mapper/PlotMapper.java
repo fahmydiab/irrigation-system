@@ -1,5 +1,6 @@
 package com.example.irrigationsystem.mapper;
 
+import com.example.irrigationsystem.dto.PlotDetailDto;
 import com.example.irrigationsystem.dto.PlotDto;
 import com.example.irrigationsystem.model.Plot;
 import org.mapstruct.Mapper;
@@ -12,5 +13,7 @@ public interface PlotMapper {
     PlotDto plotToPlotDto(Plot plot);
 
     List<PlotDto> plotsToPlotDtos(List<Plot> plots);
+    PlotDetailDto plotToPlotDetailDto(Plot plot);
+    List<PlotDetailDto> plotsToPlotDetailDtos(List<Plot> plots);
 
 }

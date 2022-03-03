@@ -1,6 +1,8 @@
 package com.example.irrigationsystem.rest;
 
+import com.example.irrigationsystem.dto.PlotDetailDto;
 import com.example.irrigationsystem.dto.PlotDto;
+import com.example.irrigationsystem.filter.PlotFilter;
 import com.example.irrigationsystem.mapper.PlotMapper;
 import com.example.irrigationsystem.model.Plot;
 import com.example.irrigationsystem.model.PlotTimeSlot;
@@ -30,15 +32,15 @@ public class PlotController {
     private final PlotMapper mapper;
 
     @GetMapping
-    public List<PlotDto> list() {
-        List<Plot> plots = plotService.list();
-        return mapper.plotsToPlotDtos(plots);
+    public List<PlotDetailDto> list() {
+        List<Plot> plots = plotService.fetchAll(new PlotFilter());
+        return mapper.plotsToPlotDetailDtos(plots);
     }
 
     @GetMapping("/{id}")
-    public PlotDto getOne(@PathVariable("id") Integer id) {
+    public PlotDetailDto getOne(@PathVariable("id") Integer id) {
         return mapper
-                .plotToPlotDto(plotService.getOne(id));
+                .plotToPlotDetailDto(plotService.getOne(id));
     }
 
     @PostMapping("/{id}/time-slots")

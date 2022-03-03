@@ -1,7 +1,11 @@
 package com.example.irrigationsystem.service;
 
+import com.cosium.spring.data.jpa.entity.graph.domain.EntityGraph;
+import com.cosium.spring.data.jpa.entity.graph.domain.EntityGraphs;
+import com.example.irrigationsystem.filter.PlotFilter;
 import com.example.irrigationsystem.model.Plot;
 import com.example.irrigationsystem.repositories.PlotRepo;
+import com.example.irrigationsystem.specification.PlotSpecification;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,14 +18,16 @@ import java.util.List;
 public class PlotService {
 
     private final PlotRepo plotRepo;
+    private final PlotSpecification plotSpecification;
 
-    public List<Plot> list() {
-        List<Plot> plots = plotRepo.findAll();
+    public List<Plot> fetchAll(PlotFilter filter) {
+        List<Plot> plots = plotRepo.findAll(plotSpecification.getFilter(filter),EntityGraphs.named("plot.details"));
         return plots;
     }
 
     public Plot getOne(Integer id) {
-        return plotRepo.findById(id).orElse(null);
+        EntityGraph entityGraph = EntityGraphs.named("plot.details");
+        return plotRepo.findById(id, entityGraph);
     }
 
     @Transactional

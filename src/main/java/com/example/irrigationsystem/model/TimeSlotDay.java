@@ -7,8 +7,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Entity()
-@Table(name = "time_slot_days")
+//@Entity()
+//@Table(name = "time_slot_days")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

@@ -12,16 +12,17 @@ import java.util.Set;
   @NamedEntityGraph(name = "plot.details",
     attributeNodes = {
       @NamedAttributeNode("crop"),
-      @NamedAttributeNode(value = "plotTimeSlots")
+      @NamedAttributeNode(value = "plotTimeSlots", subgraph = "plot.timeSlots")
+    },
+    subgraphs = {
+      @NamedSubgraph(
+        name = "plot.timeSlots",
+        attributeNodes = {
+          @NamedAttributeNode("status"),
+          @NamedAttributeNode("startDateTime")
+        }
+      )
     }
-//    subgraphs = {
-//      @NamedSubgraph(
-//        name = "plot.timeSlots",
-//        attributeNodes = {
-//          @NamedAttributeNode("timeSlot")
-//        }
-//      )
-//    }
     ),
   @NamedEntityGraph(name = "plot.list",
     attributeNodes = {

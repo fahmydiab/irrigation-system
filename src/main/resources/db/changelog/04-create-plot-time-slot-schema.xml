@@ -30,8 +30,10 @@
 <!--    <addForeignKeyConstraint constraintName="time_slots_fk"-->
 <!--                             baseTableName="plot_time_slots" baseColumnNames="time_slot_id"-->
 <!--                             referencedTableName="time_slots" referencedColumnNames="id"/>-->
-    <addUniqueConstraint tableName="plot_time_slots" columnNames="plot_id,start_date_time"
-                         constraintName="plot_start_time_unique"/>
+
+    <addUniqueConstraint  columnNames="plot_id, start_date_time"
+                          constraintName="plot_start_time_unique"
+                          tableName="plot_time_slots"/>
 
     <addForeignKeyConstraint constraintName="plots_fk"
                              baseTableName="plot_time_slots" baseColumnNames="plot_id"
