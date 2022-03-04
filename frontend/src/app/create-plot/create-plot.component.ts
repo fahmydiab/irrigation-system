@@ -11,7 +11,7 @@ import {PlotTimeSlot} from "../models/plot-time-slot.model";
   templateUrl: './create-plot.component.html',
 })
 export class CreatePlotComponent
-  implements OnInit,OnDestroy {
+  implements OnInit, OnDestroy {
   form: FormGroup;
   time: string;
   plot: Plot = new Plot();
@@ -27,16 +27,13 @@ export class CreatePlotComponent
   }
 
   ngOnInit() {
-    this.plot.plotTimeSlots.forEach(slot =>{
+    this.plot.plotTimeSlots.forEach(slot => {
       let date = slot.startDateTime;
-      let year = date.getFullYear();
-      let month = date.getMonth();
-      let day = date.getDay();
       this.datesSelected.push(
         {
-          year: year,
-          month: month,
-          day: day
+          year: parseInt(date.toString().split('T')[0].split('-')[0]),
+          month: parseInt(date.toString().split('T')[0].split('-')[1]),
+          day: parseInt(date.toString().split('T')[0].split('-')[2])
         }
       )
     });
