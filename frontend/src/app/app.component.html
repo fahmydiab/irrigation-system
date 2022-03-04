@@ -1,0 +1,26 @@
+<ul class="nav nav-pills">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Plot List</a>
+  </li>
+</ul>
+
+<table class="table table-striped col-md-6">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Crop</th>
+    <th scope="col">Area</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let plot of plots; index as i" (click)="edit(plot, $event)">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>
+      {{ plot.crop }}
+    </td>
+    <td>{{ plot.area | number }}</td>
+    <td></td>
+  </tr>
+  </tbody>
+</table>

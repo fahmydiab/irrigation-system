@@ -1,0 +1,21 @@
+<div *ngIf="form">
+  <form
+    (ngSubmit)="onSubmit()"
+    [formGroup]="form"
+  >
+
+    <app-text-input
+      name="Crop"
+      formControlName="crop"
+      [required]="false"
+      itemClass="mb-2"
+    ></app-text-input>
+
+    <app-number-input
+      name="Area"
+      formControlName="area"
+      [required]="true"
+      itemClass="mb-2"
+    ></app-number-input>
+  </form>
+</div>
