@@ -18,11 +18,15 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.fetchPlots();
+  }
+
+
+  private fetchPlots() {
     this.plotService.listDetails().subscribe(
       plots => this.plots = plots
     );
   }
-
 
   edit(plot: Plot, $event: any) {
     const modal: NzModalRef<CreatePlotComponent, NzSafeAny> =
@@ -32,7 +36,9 @@ export class AppComponent implements OnInit {
         nzComponentParams: { plot: { ...plot } },
         nzMaskClosable: false,
         nzOnCancel: () => modal.destroy(),
-        nzOnOk: (component: CreatePlotComponent) => component.onEdit(),
+        nzOnOk: (component: CreatePlotComponent) => {
+          component.onEdit().then(r => this.fetchPlots());
+        }
       });
 
     $event.stopPropagation();

@@ -17,7 +17,7 @@
   <tr *ngFor="let plot of plots; index as i" (click)="edit(plot, $event)">
     <th scope="row">{{ i + 1 }}</th>
     <td>
-      {{ plot.crop }}
+      {{ plot.crop?.name }}
     </td>
     <td>{{ plot.area | number }}</td>
     <td></td>

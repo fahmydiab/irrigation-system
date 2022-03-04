@@ -1,21 +1,37 @@
-<div *ngIf="form">
-  <form
-    (ngSubmit)="onSubmit()"
-    [formGroup]="form"
-  >
+<div *ngIf="form" class="row">
+  <div class="col-md-6">
+    <form
+      (ngSubmit)="onSubmit()"
+      [formGroup]="form"
+    >
+      <div class="form-group">
+        <label>Crop</label>
+        <input
+          [attr.disabled]="plot.crop?.name"
+          name="Crop"
+          formControlName="crop"
+          class="form-control"
+        />
+        <label>Area</label>
+        <input
+          name="Area"
+          formControlName="area"
+          class="form-control"
+          required
+        />
+        <div class="alert alert-danger"
+             *ngIf="form.controls['area'].touched && form.controls['area'].invalid">
+          Title is required.
+        </div>
+      </div>
+      <div>
+      <p>Multi-select date-picker</p>
+      <p>If you want to select a range, use Ctrl Key</p>
+      <ngb-multi-date-picker [datesSelected]="datesSelected" (datesSelectedChange)="change($event)">
+      </ngb-multi-date-picker>
 
-    <app-text-input
-      name="Crop"
-      formControlName="crop"
-      [required]="false"
-      itemClass="mb-2"
-    ></app-text-input>
+      </div>>
 
-    <app-number-input
-      name="Area"
-      formControlName="area"
-      [required]="true"
-      itemClass="mb-2"
-    ></app-number-input>
-  </form>
+    </form>
+  </div>
 </div>

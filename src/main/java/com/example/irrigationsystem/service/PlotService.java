@@ -3,6 +3,7 @@ package com.example.irrigationsystem.service;
 import com.cosium.spring.data.jpa.entity.graph.domain.EntityGraph;
 import com.cosium.spring.data.jpa.entity.graph.domain.EntityGraphs;
 import com.example.irrigationsystem.filter.PlotFilter;
+import com.example.irrigationsystem.model.Crop;
 import com.example.irrigationsystem.model.Plot;
 import com.example.irrigationsystem.repositories.PlotRepo;
 import com.example.irrigationsystem.specification.PlotSpecification;
@@ -18,6 +19,7 @@ import java.util.List;
 public class PlotService {
 
     private final PlotRepo plotRepo;
+    private final CropService cropService;
     private final PlotSpecification plotSpecification;
 
     public List<Plot> fetchAll(PlotFilter filter) {
@@ -37,6 +39,12 @@ public class PlotService {
 
     @Transactional
     public Plot update(Plot plot) {
+        Crop crop = plot.getCrop();
+        if (crop.getId()==null)
+        {
+            Crop newCrop = cropService.create(crop);
+            plot.setCrop(newCrop);
+        }
         return plotRepo.save(plot);
     }
 

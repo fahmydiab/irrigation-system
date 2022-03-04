@@ -11,8 +11,6 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CreatePlotComponent} from "./create-plot/create-plot.component";
-import {NumberInputComponent} from "./number-input/number-input.component";
-import {TextInputComponent} from "./text-input/text-input.component";
 import {NzFormModule} from "ng-zorro-antd/form";
 import {NzInputModule} from "ng-zorro-antd/input";
 import {NzInputNumberModule} from "ng-zorro-antd/input-number";
@@ -24,8 +22,6 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     CreatePlotComponent,
-    NumberInputComponent,
-    TextInputComponent
   ],
   imports: [
     FormsModule,

@@ -19,7 +19,7 @@ export class CreatePlotComponent
   ngOnInit() {
 
     this.form = this.fb.group({
-      crop: [this.plot.crop],
+      crop: [this.plot.crop?.name],
       area: [
         this.plot.area,
         [Validators.required, Validators.min(0)],
@@ -40,6 +40,7 @@ export class CreatePlotComponent
   onEdit() {
     if (this.form.valid) {
       const newPlot = { ...this.plot, ...this.form.value };
+      newPlot.crop = {name:this.form.controls['crop'].value}
       return this.plotService
         .update(newPlot)
         .toPromise()
