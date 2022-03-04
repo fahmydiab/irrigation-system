@@ -8,6 +8,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -17,6 +19,7 @@ public class CropService {
 
     @Transactional
     public Crop create(Crop crop) {
+        crop.setCreatedDate(LocalDate.now());
         List<Crop> cropList = cropRepo.findByName(crop.getName());
         if(cropList.isEmpty())
             return cropRepo.save(crop);

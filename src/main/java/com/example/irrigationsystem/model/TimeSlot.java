@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-//@Entity
-//@Table(name = "time_slots")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,19 +23,12 @@ public class TimeSlot implements Serializable {
   @Column(scale = 2)
   private BigDecimal waterAmountPerSlot;
 
-//  @OneToMany(mappedBy = "timeSlot", fetch = FetchType.LAZY)
-//  @ToString.Exclude
-//  @EqualsAndHashCode.Exclude
-//  @JsonBackReference("timeSlot-plotTimeSlot")
-//  private List<PlotTimeSlot> plotTimeSlots;
 
-//  @OneToMany(mappedBy = "timeSlot", fetch = FetchType.LAZY)
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
   @ElementCollection
   private List<Date> days = new ArrayList<>();
 
-//  @OneToMany(mappedBy = "timeSlot", fetch = FetchType.LAZY)
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
   @ElementCollection

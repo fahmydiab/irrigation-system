@@ -34,7 +34,7 @@ export class PlotService {
   }
 
   create(plot: Plot) {
-    return this.http.put(base_url,plot)
+    return this.http.post(base_url,plot)
       .pipe(
         catchError(err => {
           throw new Error(err.error)

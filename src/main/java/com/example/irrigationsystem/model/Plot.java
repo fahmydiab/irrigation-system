@@ -30,14 +30,6 @@ import java.util.Set;
       @NamedAttributeNode("crop"),
       @NamedAttributeNode(value = "plotTimeSlots")
     }
-//          subgraphs = {
-//    @NamedSubgraph(
-//      name = "plot.timeSlots",
-//      attributeNodes = {
-//        @NamedAttributeNode("timeSlot")
-//      }
-//    )
-//  }
   )
 })
 @Entity

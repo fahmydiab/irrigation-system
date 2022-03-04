@@ -27,7 +27,7 @@ export class CreatePlotComponent
   }
 
   ngOnInit() {
-    this.plot.plotTimeSlots.forEach(slot => {
+    this.plot.plotTimeSlots?.forEach(slot => {
       let date = slot.startDateTime;
       this.datesSelected.push(
         {
@@ -61,7 +61,9 @@ export class CreatePlotComponent
   onSubmit(): Promise<any> {
     this.fillTimeSlotDays();
     if (this.form.valid) {
-      return this.plotService.create(this.form.value).toPromise();
+      const newPlot = {...this.plot, ...this.form.value};
+      newPlot.crop = {name: this.form.controls['crop'].value}
+      return this.plotService.create(newPlot).toPromise();
     } else {
       this.setFieldDirty();
       return Promise.reject(false);

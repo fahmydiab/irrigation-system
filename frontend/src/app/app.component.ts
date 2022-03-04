@@ -43,4 +43,21 @@ export class AppComponent implements OnInit {
     $event.stopPropagation();
     return false;
   }
+
+  createNew( $event: any) {
+    const modal: NzModalRef<CreatePlotComponent, NzSafeAny> =
+      this.modalService.create({
+        nzTitle: 'New Plot',
+        nzContent: CreatePlotComponent,
+        nzComponentParams: { plot: new Plot() },
+        nzMaskClosable: false,
+        nzOnCancel: () => modal.destroy(),
+        nzOnOk: (component: CreatePlotComponent) => {
+          component.onSubmit().then(r => this.fetchPlots());
+        }
+      });
+
+    $event.stopPropagation();
+    return false;
+  }
 }

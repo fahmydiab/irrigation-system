@@ -14,9 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.Month;
+import java.time.LocalDate;
 import java.util.*;
 
 @Service
@@ -40,46 +38,40 @@ public class PlotService {
 
     @Transactional
     public Plot create(Plot plot) {
-        Plot savedPlot = plotRepo.save(plot);
-//        createTimeSlots(savedPlot);
-        return savedPlot;
-    }
+        plot.setCreatedDate(LocalDate.now());
+        return updateOrCreatePlot(plot);
 
-//    private void createTimeSlots(Plot savedPlot) {
-//        LocalTime startTime = savedPlot.getStartTime();
-//        Set<PlotTimeSlot> plotTimeSlots = savedPlot.getPlotTimeSlots();
-//
-//        PlotTimeSlot plotTimeSlot = new PlotTimeSlot();
-//        for (Date day : timeSlot.getDays()) {
-//            for (LocalTime startTime : timeSlot.getSlotTimeList()) {
-//                plotTimeSlot.setStatus(PlotTimeSlotEnum.INIT);
-//                plotTimeSlot.setPlot(savedPlot);
-//                plotTimeSlot.setStartDateTime(LocalDateTime.of(day.getYear(), Month.of(day.getMonth()), day.getDay()
-//                    , startTime.getHour(), startTime.getMinute()));
-//                plotTimeSlotService.create(plotTimeSlot);
-//            }
-//        }
-//    }
+    }
 
     @Transactional
     public Plot update(Plot plot) {
+        plot.setLastModifiedDate(LocalDate.now());
+        return updateOrCreatePlot(plot);
+    }
+
+    private Plot updateOrCreatePlot(Plot plot) {
+        Plot entity = new Plot();
+
         Crop crop = plot.getCrop();
         if (crop.getId()==null)
         {
             Crop newCrop = cropService.create(crop);
-            plot.setCrop(newCrop);
+            entity.setCrop(newCrop);
         }
+        entity.setArea(plot.getArea());
+        Plot savedPlot = plotRepo.save(entity);
+
         Set<PlotTimeSlot> slots = new HashSet<>();
         for (PlotTimeSlot slot : plot.getPlotTimeSlots()) {
             if(slot.getId()==null) {
+                slot.setPlot(savedPlot);
                 slot.setStatus(PlotTimeSlotEnum.INIT);
                 plotTimeSlotService.create(slot);
                 slots.add(slot);
             }
         }
-        plot.setPlotTimeSlots(slots);
-        Plot savedPlot = plotRepo.save(plot);
-//        createTimeSlots(savedPlot);
+        savedPlot.setPlotTimeSlots(slots);
+        plotRepo.save(savedPlot);
         return savedPlot;
     }
 

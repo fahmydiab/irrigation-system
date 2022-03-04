@@ -8,6 +8,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 import static javax.persistence.TemporalType.TIMESTAMP;
@@ -21,13 +22,11 @@ public abstract class Auditable {
   @Column(updatable = false)
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
-  @Temporal(TIMESTAMP)
-  private Date createdDate;
+  private LocalDate createdDate;
 
 
   @LastModifiedDate
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
-  @Temporal(TIMESTAMP)
-  private Date lastModifiedDate;
+  private LocalDate lastModifiedDate;
 }

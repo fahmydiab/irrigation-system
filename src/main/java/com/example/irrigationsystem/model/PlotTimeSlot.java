@@ -32,11 +32,5 @@ public class PlotTimeSlot extends Auditable {
     @EqualsAndHashCode.Exclude
     private Plot plot;
 
-//  @ManyToOne
-//  @JoinColumn(name = "time_slot_id")
-//  @ToString.Exclude
-//  @EqualsAndHashCode.Exclude
-//  private TimeSlot timeSlot;
-
     private LocalDateTime startDateTime;
 }

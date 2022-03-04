@@ -4,7 +4,7 @@ export class Plot {
   id: number;
   crop: Crop;
   area: number;
-  plotTimeSlots: PlotTimeSlot[];
+  plotTimeSlots: PlotTimeSlot[] = [];
   startTime: string;
 
   constructor(props = {}) {

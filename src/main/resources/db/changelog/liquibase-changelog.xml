@@ -6,10 +6,7 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
   <include file="01-create-crop-table.xml" relativeToChangelogFile="true"/>
   <include file="02-create-plot-schema.xml" relativeToChangelogFile="true"/>
-  <include file="03-create-time-slot-schema.xml" relativeToChangelogFile="true"/>
-  <include file="04-create-plot-time-slot-schema.xml" relativeToChangelogFile="true"/>
-  <include file="05-create-time-slot-days-schema.xml" relativeToChangelogFile="true"/>
-  <include file="06-create-time-slot-start-times-schema.xml" relativeToChangelogFile="true"/>
+  <include file="03-create-plot-time-slot-schema.xml" relativeToChangelogFile="true"/>
 
 
 </databaseChangeLog>
