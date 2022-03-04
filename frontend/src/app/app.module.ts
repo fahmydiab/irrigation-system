@@ -15,6 +15,7 @@ import {NzFormModule} from "ng-zorro-antd/form";
 import {NzInputModule} from "ng-zorro-antd/input";
 import {NzInputNumberModule} from "ng-zorro-antd/input-number";
 import {NzModalModule} from "ng-zorro-antd/modal";
+import {MultiDatePicker} from "./multi-data-picker/multi-data-picker";
 
 registerLocaleData(en);
 
@@ -22,6 +23,7 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     CreatePlotComponent,
+    MultiDatePicker,
   ],
   imports: [
     FormsModule,

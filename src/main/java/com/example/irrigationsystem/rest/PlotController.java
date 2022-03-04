@@ -43,21 +43,21 @@ public class PlotController {
                 .plotToPlotDetailDto(plotService.getOne(id));
     }
 
-    @PostMapping("/{id}/time-slots")
-    public void createTimeSlot(@PathVariable("id") Integer id, @RequestBody TimeSlot timeSlot) {
-        PlotTimeSlot plotTimeSlot = new PlotTimeSlot();
-        Plot plot = plotService.getOne(id);
-        for (Date day : timeSlot.getDays()) {
-            for (LocalTime startTime : timeSlot.getSlotTimeList()) {
-                plotTimeSlot.setStatus(PlotTimeSlotEnum.INIT);
-                plotTimeSlot.setPlot(plot);
-                plotTimeSlot.setStartDateTime(LocalDateTime.of(day.getYear(), Month.of(day.getMonth()), day.getDay()
-                        , startTime.getHour(), startTime.getMinute()));
-                plotTimeSlotService.create(plotTimeSlot);
-            }
-        }
-
-    }
+//    @PostMapping("/{id}/time-slots")
+//    public void createTimeSlot(@PathVariable("id") Integer id, @RequestBody TimeSlot timeSlot) {
+//        PlotTimeSlot plotTimeSlot = new PlotTimeSlot();
+//        Plot plot = plotService.getOne(id);
+//        for (Date day : timeSlot.getDays()) {
+//            for (LocalTime startTime : timeSlot.getSlotTimeList()) {
+//                plotTimeSlot.setStatus(PlotTimeSlotEnum.INIT);
+//                plotTimeSlot.setPlot(plot);
+//                plotTimeSlot.setStartDateTime(LocalDateTime.of(day.getYear(), Month.of(day.getMonth()), day.getDay()
+//                        , startTime.getHour(), startTime.getMinute()));
+//                plotTimeSlotService.create(plotTimeSlot);
+//            }
+//        }
+//
+//    }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public Plot create(@RequestBody Plot plot) {

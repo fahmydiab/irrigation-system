@@ -6,6 +6,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalTime;
 import java.util.Set;
 
 @NamedEntityGraphs({
@@ -54,6 +55,8 @@ public class Plot extends Auditable {
 
   @Column(scale = 2)
   private BigDecimal area;
+
+  private LocalTime startTime;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "crop_Id")

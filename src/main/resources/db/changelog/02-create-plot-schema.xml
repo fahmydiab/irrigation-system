@@ -13,6 +13,8 @@
       <column name="area" type="decimal(20,2)">
         <constraints nullable="false"/>
       </column>
+      <column name="start_time" type="time">
+      </column>
       <column name="crop_id" type="int">
         <constraints referencedTableName="crops" foreignKeyName="id"/>
       </column>

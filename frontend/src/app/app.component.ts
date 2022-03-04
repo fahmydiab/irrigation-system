@@ -11,7 +11,7 @@ import {NzSafeAny} from "ng-zorro-antd/core/types";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'frontend';
+  title = 'Irrigation System';
   plots: Plot[] = [];
   constructor(private plotService : PlotService,
               protected modalService: NzModalService) {
@@ -20,7 +20,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.fetchPlots();
   }
-
 
   private fetchPlots() {
     this.plotService.listDetails().subscribe(

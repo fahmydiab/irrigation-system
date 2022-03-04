@@ -13,5 +13,6 @@ public class PlotDetailDto extends PlotBaseDto {
     private BigDecimal area;
     private CropDto crop;
     private List<PlotTimeSlotDto> plotTimeSlots;
+    private String startTime;
 
 }

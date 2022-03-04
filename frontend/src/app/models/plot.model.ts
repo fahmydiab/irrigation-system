@@ -5,6 +5,7 @@ export class Plot {
   crop: Crop;
   area: number;
   plotTimeSlots: PlotTimeSlot[];
+  startTime: string;
 
   constructor(props = {}) {
     Object.assign(this, props);

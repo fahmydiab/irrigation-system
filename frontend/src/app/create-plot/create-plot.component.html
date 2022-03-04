@@ -21,17 +21,27 @@
         />
         <div class="alert alert-danger"
              *ngIf="form.controls['area'].touched && form.controls['area'].invalid">
-          Title is required.
+          Area is required.
+        </div>
+        <label>Slot Times</label>
+        <div>
+          <p>Multi-select date-picker</p>
+          <p>If you want to select a range, use Ctrl Key</p>
+          <ngb-multi-date-picker
+            [datesSelected]="datesSelected"
+            (datesSelectedChange)="change($event)">
+          </ngb-multi-date-picker>
+        </div>
+        <div>
+          <input required
+                 type="time"
+                 name="Start Time"
+                 formControlName="startTime"
+                 class="form-control">
         </div>
       </div>
-      <div>
-      <p>Multi-select date-picker</p>
-      <p>If you want to select a range, use Ctrl Key</p>
-      <ngb-multi-date-picker [datesSelected]="datesSelected" (datesSelectedChange)="change($event)">
-      </ngb-multi-date-picker>
-
-      </div>>
-
     </form>
   </div>
+
+
 </div>

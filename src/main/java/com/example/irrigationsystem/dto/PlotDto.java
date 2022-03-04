@@ -11,5 +11,6 @@ public class PlotDto {
     private Integer id;
     private BigDecimal area;
     private CropDto crop;
+    private String startTime;
 
 }
