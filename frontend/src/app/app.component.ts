@@ -11,6 +11,7 @@ import {NzSafeAny} from "ng-zorro-antd/core/types";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  active = 'list';
   title = 'Irrigation System';
   plots: Plot[] = [];
   constructor(private plotService : PlotService,
