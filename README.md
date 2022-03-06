@@ -18,4 +18,6 @@ or simply import it in intelij idea and run
 2 - npm install
 3 - Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+![image](https://user-images.githubusercontent.com/30721264/156941456-b66be389-a280-4be2-8e72-5bb747e74c93.png)
+
 ![image](https://user-images.githubusercontent.com/30721264/156941184-89c82a8a-0f37-4922-aadf-719bb8bb3a0c.png)
