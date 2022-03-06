@@ -51,7 +51,8 @@ export class PlotService {
       );
   }
 
-  delete<T>(url: string): Observable<Plot> {
+  delete<T>(id: number): Observable<Plot> {
+    const url = `${base_url}/${id}`;
     return this.http.delete<Plot>(url).pipe(
       catchError(err => {
         throw new Error(err.error);

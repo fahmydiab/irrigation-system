@@ -17,13 +17,16 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let plot of plots; index as i" (click)="edit(plot, $event)">
+  <tr *ngFor="let plot of plots; index as i">
     <th scope="row">{{ i + 1 }}</th>
     <td>
       {{ plot.crop?.name }}
     </td>
     <td>{{ plot.area | number }}</td>
-    <td></td>
+    <td>
+      <button class="btn btn-success" type="button" (click)="edit(plot, $event)">Edit</button>
+      <button class="btn btn-danger" type="button" (click)="delete(plot.id)">Delete</button>
+    </td>
   </tr>
   </tbody>
 </table>

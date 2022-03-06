@@ -20,4 +20,8 @@ public class Crop extends Auditable{
 
   @Column(scale = 2)
   private BigDecimal waterAmountPerAcre;
+
+  public Crop(int i) {
+
+  }
 }

@@ -61,4 +61,8 @@ export class AppComponent implements OnInit {
     $event.stopPropagation();
     return false;
   }
+
+  delete(id: number) {
+    return this.plotService.delete(id).subscribe(()=>this.fetchPlots());
+  }
 }

@@ -81,8 +81,9 @@ public class PlotService {
     }
 
     public Plot createPlot() {
-        Plot plot = new Plot();
+        Plot plot = new Plot(100);
         plot.setArea(new BigDecimal(1000));
+        plot.setCrop(new Crop(1));
         return plotRepo.save(plot);
     }
 }
